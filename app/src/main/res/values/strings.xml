@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">backToBasics</string>
+    <string name="cost_input_text">Cost of service</string>
+    <string name="service_question_text">How was the service?</string>
+    <string name="option_amazing">Amazing (20%)</string>
+    <string name="option_good">Good (18%)</string>
+    <string name="option_okay">Okay (15%)</string>
+
+</resources>
