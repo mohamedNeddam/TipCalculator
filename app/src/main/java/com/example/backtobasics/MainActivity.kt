@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.*
 import com.example.backtobasics.databinding.ActivityMainBinding
+import java.text.NumberFormat
 import java.time.Duration
 
 class MainActivity : AppCompatActivity() {
@@ -31,17 +32,21 @@ class MainActivity : AppCompatActivity() {
     }
     private fun calculateTip(){
 
-        val cost = binding.costInput.text.toString().toDouble()
+        var cost1 = binding.costInput.text.toString()
+        var cost = cost1.toDoubleOrNull()
         val tipPercentage = when(binding.tipsRadioGroup.checkedRadioButtonId){
             R.id.option_twenty_percent -> 0.2
             R.id.option_eighteen_percent -> 0.18
             else -> 0.15
         }
-        var message = cost + (cost*tipPercentage)
+        var message = cost!! + (cost!!*tipPercentage)
 
         if(binding.roundUpSwitch.isChecked)   message = kotlin.math.ceil(message)
 
-        Toast.makeText(this,message.toString(),Toast.LENGTH_SHORT).show()
+        val formattedTip = NumberFormat.getCurrencyInstance().format(message)
+        val result = getString(R.string.tip_amount,formattedTip)
+
+        Toast.makeText(this,result,Toast.LENGTH_SHORT).show()
 
 
 
