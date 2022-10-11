@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
 
@@ -12,21 +18,20 @@
         android:id="@+id/icon_cost_of_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_store"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/cost_input_layout"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/cost_input_layout"
-        />
+        app:srcCompat="@drawable/ic_store" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cost_input_layout"
 
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
         android:layout_marginStart="16dp"
         android:hint="@string/cost_input_text"
+        app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
+        app:layout_constraintTop_toTopOf="parent"
 
         >
 
@@ -35,57 +40,55 @@
             android:id="@+id/cost_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            />
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
         android:id="@+id/icon_service_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_service"
+        app:layout_constraintBottom_toBottomOf="@id/service_question"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/service_question"
-        app:layout_constraintBottom_toBottomOf="@id/service_question"/>
+        app:srcCompat="@drawable/ic_service" />
 
 
     <TextView
         android:id="@+id/service_question"
+        style="@style/Widget.backToBasics.TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/service_question_text"
-        style="@style/Widget.backToBasics.TextView"
         android:layout_marginTop="16dp"
+        android:text="@string/service_question_text"
         app:layout_constraintStart_toStartOf="@+id/cost_input_layout"
-        app:layout_constraintTop_toBottomOf="@id/cost_input_layout"
-        />
+        app:layout_constraintTop_toBottomOf="@id/cost_input_layout" />
 
     <RadioGroup
         android:id="@+id/tips_radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/service_question"
-        app:layout_constraintStart_toStartOf="@id/service_question"
-        android:orientation="vertical"
         android:checkedButton="@id/option_eighteen_percent"
-        >
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@id/service_question"
+        app:layout_constraintTop_toBottomOf="@+id/service_question">
+
         <RadioButton
             android:id="@+id/option_twenty_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/option_amazing"/>
+            android:text="@string/option_amazing" />
 
         <RadioButton
             android:id="@+id/option_eighteen_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/option_good"/>
+            android:text="@string/option_good" />
 
         <RadioButton
             android:id="@+id/option_fifteen_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/option_okay"/>
+            android:text="@string/option_okay" />
 
     </RadioGroup>
 
@@ -94,30 +97,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_round_up"
+        app:layout_constraintBottom_toBottomOf="@id/round_up_switch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/round_up_switch"
-        app:layout_constraintBottom_toBottomOf="@id/round_up_switch"/>
+        app:layout_constraintTop_toTopOf="@id/round_up_switch" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/round_up_switch"
+        style="@style/Widget.backToBasics.CompoundButton.Switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/switch_text"
-        style="@style/Widget.backToBasics.CompoundButton.Switch"
-        app:layout_constraintTop_toBottomOf="@+id/tips_radio_group"
-        app:layout_constraintStart_toStartOf="@id/cost_input_layout"
-        app:layout_constraintEnd_toEndOf="parent"
         android:checked="true"
-        />
+        android:text="@string/switch_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cost_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/tips_radio_group" />
 
     <Button
         android:id="@+id/calculate_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Calculate"
-        app:layout_constraintStart_toStartOf="@id/cost_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/round_up_switch"/>
+        app:layout_constraintStart_toStartOf="@id/cost_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
