@@ -7,38 +7,65 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/icon_cost_of_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_store"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/cost_input_layout"
+        app:layout_constraintTop_toTopOf="@id/cost_input_layout"
+        />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/cost_input"
-        android:layout_width="match_parent"
+        android:id="@+id/cost_input_layout"
+
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_cost_of_service"
+        android:layout_marginStart="16dp"
         android:hint="@string/cost_input_text"
+
         >
+
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cost_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/icon_service_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_service"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/service_question"
+        app:layout_constraintBottom_toBottomOf="@id/service_question"/>
 
 
     <TextView
-
         android:id="@+id/service_question"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/service_question_text"
-        app:layout_constraintTop_toBottomOf="@+id/cost_input"
-        app:layout_constraintStart_toStartOf="parent"/>
+        style="@style/Widget.backToBasics.TextView"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/cost_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/cost_input_layout"
+        />
 
     <RadioGroup
         android:id="@+id/tips_radio_group"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/service_question"
-        app:layout_constraintStart_toStartOf="@+id/cost_input"
+        app:layout_constraintStart_toStartOf="@id/service_question"
         android:orientation="vertical"
         android:checkedButton="@id/option_eighteen_percent"
         >
@@ -62,13 +89,23 @@
 
     </RadioGroup>
 
-    <Switch
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_round_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/round_up_switch"
+        app:layout_constraintBottom_toBottomOf="@id/round_up_switch"/>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/round_up_switch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/switch_text"
+        style="@style/Widget.backToBasics.CompoundButton.Switch"
         app:layout_constraintTop_toBottomOf="@+id/tips_radio_group"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cost_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
         android:checked="true"
         />
@@ -78,7 +115,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Calculate"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cost_input_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/round_up_switch"/>
 
