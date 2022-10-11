@@ -9,10 +9,6 @@ import java.text.NumberFormat
 import java.time.Duration
 
 class MainActivity : AppCompatActivity() {
-    // example without the use of viewBinding
-//    private lateinit var inputText: EditText
-//    private lateinit var inputRadio: RadioGroup
-//    private lateinit var calculateButton : Button
 
     //create the binding object for mainActivity class (generated class based ob the mainActivity layout)
     private lateinit var binding: ActivityMainBinding
@@ -22,22 +18,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // we will use view binding later
-//        inputText = findViewById(R.id.cost_input)
-//        inputRadio = findViewById(R.id.tips_radio_group)
-//        calculateButton = findViewById(R.id.calculate_button)
         binding.calculateButton.setOnClickListener { calculateTip() }
 
     }
     private fun calculateTip(){
-
         var cost : Double? = this.binding.costInput.text.toString().toDoubleOrNull()
         if(cost == null){
             Toast.makeText(this,"there is no value",Toast.LENGTH_SHORT).show()
             return
         }
-
 
         val tipPercentage = when(binding.tipsRadioGroup.checkedRadioButtonId){
             R.id.option_twenty_percent -> 0.2
@@ -51,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         val formattedTip = NumberFormat.getCurrencyInstance().format(message)
         val result = getString(R.string.tip_amount,formattedTip)
 
+        binding.resultTips.text = result;
         Toast.makeText(this,result,Toast.LENGTH_SHORT).show()
 
 

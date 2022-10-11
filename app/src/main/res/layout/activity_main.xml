@@ -121,6 +121,22 @@
         app:layout_constraintStart_toStartOf="@id/cost_input_layout"
         app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/result_tips"
+        app:layout_constraintTop_toBottomOf="@id/calculate_button"
+        style="@style/Widget.backToBasics.TextView"
+        android:text="The result is : "/>
+
+    <TextView
+        android:id="@+id/result_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculate_button"
+        style="@style/Widget.backToBasics.TextView"
+        android:text="00.00"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
