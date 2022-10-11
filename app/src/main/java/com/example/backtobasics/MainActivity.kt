@@ -10,12 +10,12 @@ import java.time.Duration
 
 class MainActivity : AppCompatActivity() {
     // example without the use of viewBinding
-    private lateinit var inputText: EditText
-    private lateinit var inputRadio: RadioGroup
-    private lateinit var calculateButton : Button
+//    private lateinit var inputText: EditText
+//    private lateinit var inputRadio: RadioGroup
+//    private lateinit var calculateButton : Button
 
     //create the binding object for mainActivity class (generated class based ob the mainActivity layout)
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,14 +32,19 @@ class MainActivity : AppCompatActivity() {
     }
     private fun calculateTip(){
 
-        var cost1 = binding.costInput.text.toString()
-        var cost = cost1.toDoubleOrNull()
+        var cost : Double? = this.binding.costInput.text.toString().toDoubleOrNull()
+        if(cost == null){
+            Toast.makeText(this,"there is no value",Toast.LENGTH_SHORT).show()
+            return
+        }
+
+
         val tipPercentage = when(binding.tipsRadioGroup.checkedRadioButtonId){
             R.id.option_twenty_percent -> 0.2
             R.id.option_eighteen_percent -> 0.18
             else -> 0.15
         }
-        var message = cost!! + (cost!!*tipPercentage)
+        var message = cost + (cost*tipPercentage)
 
         if(binding.roundUpSwitch.isChecked)   message = kotlin.math.ceil(message)
 
